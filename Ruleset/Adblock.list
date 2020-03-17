@@ -5,7 +5,6 @@ USER-AGENT,*Splash*
 DOMAIN,wa.gtimg.com
 DOMAIN,e.crashlytics.com
 DOMAIN,unidesk.alicdn.com
-DOMAIN,mobile-api.adguard.com
 DOMAIN,cdn-adphone.wenhua.com.cn
 
 # 广告联盟
@@ -48,9 +47,6 @@ URL-REGEX,"^https?:\/\/m\.creditcard\.ecitic\.com\/.*\/appStartAdv$"
 # 缤纷生活(中国银行)
 URL-REGEX,"^https?:\/\/mlife\.jf365\.boc\.cn\/AppPrj\/FirstPic\.do"
 
-# 掌上生活(招商银行)
-URL-REGEX,"^https?:\/\/mlife\.cmbchina\.com\/ClientFaceService\/.*Advertise.*\.json$"
-
 # 买单吧(交通银行)
 URL-REGEX,"^https?:\/\/creditcardapp\.bankcomm\.com\/mapp\/common\/queryGuidePageAds\.do$"
 
@@ -59,9 +55,6 @@ DOMAIN,ad.12306.cn
 
 # 腾讯新闻
 DOMAIN,news.l.qq.com
-
-# QQ音乐
-URL-REGEX,"^https?:\/\/y\.gtimg\.cn\/music\/.*_Ad/\d+\.png$"
 
 # 企鹅电竞
 URL-REGEX,"^http:\/\/shp\.qpic\.cn\/pggamehead\/.*h=\d{4}$"
@@ -72,20 +65,24 @@ URL-REGEX,"^https?:\/\/api2\.helper\.qq\.com\/game\/buttons$"
 # 微信公众号
 URL-REGEX,"^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad"
 
+# QQ音乐
+URL-REGEX,"^http:\/\/[\s\S]*\/music\/common\/upload\/t_splash_info\/"
+
 # 百度地图
 DOMAIN,map-mobile-opnimg.cdn.bcebos.com
 AND,((IP-CIDR,0.0.0.0/0,no-resolve), (USER-AGENT,%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE*))
 
-# 百度贴吧
-URL-REGEX,"^http:\/\/[\s\S]*\.baidu\.com/.*ad[xs]\.php"
-URL-REGEX,"^http:\/\/c\.tieba\.baidu\.com\/c\/s\/splashSchedule$"
-
 # 百度网盘
-URL-REGEX,"^https?:\/\/pan\.baidu\.com\/rest\/2.0\/pcs\/adx"
+URL-REGEX,"^https?:\/\/pan\.baidu\.com\/rest\/\d(\.\d)?\/pcs\/adx"
 URL-REGEX,"^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry"
 
+# 百度贴吧
+URL-REGEX,"^http:\/\/[\s\S]*\/c\/s\/splashSchedule$"
+
 # 淘宝
-URL-REGEX,"^https?:\/\/[a-z]*\.alicdn\.com\/.*\.jpg_(9\d{2}|\d{4})"
+URL-REGEX,"^https?:\/\/heic\.alicdn\.com\/.*\.jpg_(9\d{2}|\d{4})"
+IP-CIDR,203.119.144.0/21,no-resolve
+IP-CIDR,203.119.175.0/24,no-resolve
 
 # 飞猪
 URL-REGEX,"^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources\/"
@@ -108,10 +105,8 @@ URL-REGEX,"^http:\/\/p\d.meituan.net\/movie\/.*\?may_covertWebp$"
 URL-REGEX,"^http:\/\/p\d\.meituan\.net\/(wmbanner|bizad)\/"
 
 # 美团
-URL-REGEX,"^https?:\/\/s3plus\.meituan\.net\/v1\/mss_a002"
-URL-REGEX,"^https?:\/\/img\.meituan\.net\/midas\/.*@\d{4}h"
-URL-REGEX,"^https?:\/\/img\.meituan\.net\/display\/\w+\.jpg\.webp$"
-URL-REGEX,"^https?:\/\/img\.meituan\.net\/adunion\/\w+\.jpg\.webp$"
+URL-REGEX,"^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_a002"
+URL-REGEX,"^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/.*\.jpg(\.webp)?$"
 
 # 网易云音乐
 URL-REGEX,"^http:\/\/[\s\S]*\/eapi\/ad\/"
@@ -136,10 +131,10 @@ URL-REGEX,"^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload
 URL-REGEX,"^http:\/\/rich\.kuwo\.cn\/AdService\/kaiping\/adinfo"
 
 # 字节跳动
-URL-REGEX,"^https?:\/\/[\s\S]*\.snssdk\.com\/api\/ad\/"
+URL-REGEX,"^https?:\/\/[\s\S]*\.(snssdk|amemv)\.com\/api\/ad\/"
 
 # 威锋
-URL-REGEX,"^https?:\/\/api\.feng\.com\/v1\/advertisement\/.*Claunch"
+URL-REGEX,"^https?:\/\/api\.feng\.com\/v\d\/advertisement\/.*Claunch"
 
 # 斗鱼
 URL-REGEX,"^https?:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo"
@@ -170,22 +165,22 @@ DOMAIN,dsp.edm.weibo.cn
 URL-REGEX,"^https?:\/\/app\.yinxiang\.com\/ads\/getAdsInfo$"
 
 # 知乎
-URL-REGEX,"^https?:\/\/api\.zhihu\.com\/commercial_api\/.*launch"
+USER-AGENT,AVOS*
+URL-REGEX,"^https?:\/\/www\.zhihu\.com\/api\/v4\/mcn\/"
+URL-REGEX,"^https?:\/\/api\.zhihu\.com\/(ab|adx|drama|fringe|zst|commercial|ad-style-service|market/popover|search/(top|tab|preset)|.*(guide|recommendations|extended|featured-comment-ad))"
+AND,((USER-AGENT,osee2*), (NOT,((DOMAIN-SUFFIX,zhihu.com))), (NOT,((DOMAIN-SUFFIX,zhimg.com))))
 
 # 豆瓣
-URL-REGEX,"^https?:\/\/api\.douban\.com\/v2\/app_ads\/splash"
+URL-REGEX,"^https?:\/\/api\.douban\.com\/v\d\/app_ads\/splash"
 
 # 曹操出行
 URL-REGEX,"^https?:\/\/[a-z]*cap\.caocaokeji\.cn\/advert-bss\/pullAdvert\/"
 
 # 哔哩哔哩
-URL-REGEX,"^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/"
+URL-REGEX,"^https?:\/\/app\.bilibili\.com\/x\/v\d\/splash\/"
 
 # 苏州市民卡
 URL-REGEX,"^https?:\/\/newapp\.szsmk\.com\/app\/config\/.*Ad$"
-
-# 人人视频
-URL-REGEX,"^https?:\/\/api\.rr\.tv\/.*(getAll|Version)$"
 
 # 爱奇艺
 DOMAIN,static-s.iqiyi.com
@@ -196,9 +191,6 @@ DOMAIN,agn.aty.sohu.com
 DOMAIN-SUFFIX,ads.sohu.com
 AND,((DOMAIN,photovms.tv.sohu.com), (NOT,((URL-REGEX,http))))
 
-# 去哪旅游
-URL-REGEX,"^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd$"
-
 # 途牛旅游
 URL-REGEX,"^https?:\/\/m\.tuniu\.com\/api\/operation\/splash\/"
 
@@ -207,10 +199,6 @@ AND,((USER-AGENT,Cocoa*), (DOMAIN-KEYWORD,advertise))
 
 # 全民K歌
 URL-REGEX,"^http:\/\/y\.gtimg\.cn\/music\/common\/\/upload\/kg_ad/.*\d{4}\.jpg$"
-
-# 携程
-DOMAIN,video.c-ctrip.com
-URL-REGEX,"^https?:\/\/dimg04\.c-ctrip\.com\/images\/\w+_\d{3,4}_\d{4}"
 
 # 同花顺
 URL-REGEX,"^https?:\/\/adm\.10jqka\.com\.cn\/img\/ad\/\d+\/.*_(1\d{2}|\d{4})"
@@ -222,7 +210,7 @@ URL-REGEX,"^https?:\/\/api\.gotokeep\.com\/ads\/"
 URL-REGEX,"^http:\/\/ggx\.cmvideo\.cn\/request\/"
 
 # 咪咕音乐
-URL-REGEX,"^https?:\/\/app\.pd\.nf\.migu\.cn\/MIGUM2.0\/v\d.0\/update_check\.do$"
+URL-REGEX,"^https?:\/\/app\.pd\.nf\.migu\.cn\/MIGUM2\.0\/v\d(\.\d)?\/update_check\.do$"
 
 # 有道翻译官
 DOMAIN,gorgon.youdao.com
@@ -235,17 +223,51 @@ URL-REGEX,"^https?:\/\/app\.58\.com\/api\/home\/appadv\/"
 # 芒果TV
 AND,((DOMAIN-SUFFIX,da.mgtv.com), (DOMAIN-KEYWORD,mobile))
 
-# 毒
-URL-REGEX,"^https?:\/\/du\.hupucdn\.com\/\w+h\d{4}"
-
-# 拼多多
-URL-REGEX,"^http:\/\/api\.yangkeduo\.com\/api\/cappuccino\/splash"
+# 得物（毒）
+URL-REGEX,"^https?:\/\/app\.poizon\.com\/api\/v\d\/app\/advertisement\/"
 
 # 高铁管家
 URL-REGEX,"^https?:\/\/[a-z]*\.rsscc\.com\/trainact\/adver\/"
+
+# 智行火车票
+URL-REGEX,"^https?:\/\/m\.ctrip\.com\/restapi\/.*Ads"
 
 # 虾米音乐
 URL-REGEX,"^http:\/\/pic\.xiami\.net\/images\/common\/uploadpic\/.*\.jpg$"
 
 # 江苏移动
-URL-REGEX,"^http:\/\/wap\.js\.10086\.cn\/jsmccClient\/cd\/market_content\/api\/v1\/market_content\.page\.query$"
+URL-REGEX,"^http:\/\/wap\.js\.10086\.cn\/jsmccClient\/cd\/market_content\/api\/v\d\/market_content\.page\.query$"
+
+# 看理想
+URL-REGEX,"^https?:\/\/api\.vistopia\.com\.cn\/api\/v\d\/home\/advertisement"
+
+# B612咔叽
+URL-REGEX,"^http:\/\/api\.ssp\.zxrtb\.com\/myad\/"
+
+# 什么值得买
+URL-REGEX,"^https?:\/\/app-api\.smzdm\.com\/util\/loading"
+
+# 咪咕爱看
+URL-REGEX,"^http:\/\/aikanvod\.miguvideo\.com\/video\/p\/i_(adverseInterface|vodDetailsMainEx)\.jsp"
+
+# 拼多多
+URL-REGEX,"^http:\/\/t00img\.yangkeduo\.com\/goods\/.*\.jpeg\?imageView2\/format\/webp$"
+
+# 人人视频
+URL-REGEX,"^https?:\/\/api\.rr\.tv\/ad\/getAll$"
+URL-REGEX,"^https?:\/\/api\.rr\.tv\/storage\/business\/rootName\/app\/homePage\?dataType=JSON$"
+
+# 神舟专车
+URL-REGEX,"^https?:\/\/img01\.10101111cdn\.com\/adpos\/"
+
+# 美图秀秀
+URL-REGEX,"^https?:\/\/adui\.tg\.meitu\.com\/lua\/badvert"
+
+# 虎扑
+URL-REGEX,"^https?:\/\/goblin\.hupu\.com\/.*\/interfaceAd\/"
+
+# 迅游加速器
+URL-REGEX,"^https?:\/\/portal\.xunyou\.mobi\/api\/v\d\/ios\/ads\/splash"
+
+# 360家庭防火墙
+URL-REGEX,"^https?:\/\/superapp\.ifenglian\.com\/super\/configs\/getconfig$"
